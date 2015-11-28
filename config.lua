@@ -307,7 +307,7 @@
         pos = { a1 = "CENTER", a2 = "CENTER", af = "UIParent", x = 100, y = 0 },
         size = 50,
         show = true,
-        use3D = true,
+        use3D = false,
       },
       healprediction = {
         show = true,
