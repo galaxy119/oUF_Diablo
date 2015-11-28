@@ -439,8 +439,7 @@
         "yOffset",            attr.yOffset,
         "xoffset",            attr.xoffset,
         "groupFilter",        tostring(i),
-        "unitsPerColumn",     5,
-        --"unitsPerColumn",     attr.unitsPerColumn,
+        "unitsPerColumn",     attr.unitsPerColumn,
         --"columnSpacing",      attr.columnSpacing,
         --"columnAnchorPoint",  attr.columnAnchorPoint,
         "oUF-initialConfigFunction", ([[

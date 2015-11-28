@@ -543,7 +543,7 @@
         showSolo            = false,    --make this true to show while solo (only works if solo is in visiblity aswell
         showParty           = true,     --make this true to show headerin party
         showRaid            = false,    --show in raid
-        point               = "TOP",
+        point               = "LEFT",
       },
       healprediction = {
         show = true,
