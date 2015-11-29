@@ -459,7 +459,4 @@
       end
       groups[i] = group
     end
-
-    
-    
   end

@@ -65,7 +65,7 @@
           myself  = {r = 0, g = 1, b = 0, a = 1 },
           other   = {r = 0, g = 1, b = 0, a = 0.7 },
         },
-		},
+	  },
       icons = {
         pvp = {
           show = true,
@@ -261,10 +261,10 @@
         tag = "[diablo:hpval]", 
       },
 	     healper = {
- frequentUpdates = true,
-  texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar256_3",
-  tag = "[perhp]%",
-   },
+    frequentUpdates = true,
+        texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar256_3",
+        tag = "[perhp]%",
+      },
       power = {
 	frequentUpdates = true,
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",
@@ -425,7 +425,6 @@
       },
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
-        
       },
       power = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",
@@ -475,7 +474,6 @@
       },
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
-       
       },
       power = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",
@@ -499,7 +497,6 @@
       },
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
-        
       },
       power = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
@@ -533,7 +530,6 @@
       },
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
-        
       },
       power = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",
@@ -582,7 +578,6 @@
       pos = { a1 = "TOPLEFT", a2 = "TOPLEFT", af = "UIParent", x = 5, y = -5 },
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
-        
       },
       power = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",

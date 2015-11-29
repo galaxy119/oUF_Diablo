@@ -234,6 +234,4 @@
       ]]):format(128, 64, cfg.units.party.scale)
     )
     party:SetPoint("TOPLEFT",partyDragFrame,0,0)
-
-
   end
