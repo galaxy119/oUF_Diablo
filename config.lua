@@ -509,6 +509,7 @@
 
     --PARTY
     party = {
+      vertical = false,
       show = true,
       alpha = {
         notinrange = 1,
@@ -621,7 +622,7 @@
         point               = "TOP",
         yOffset             = 15,
         xoffset             = 0,
-        maxColumns          = 8,
+        maxColumns          = 4,
         unitsPerColumn      = 10,
         columnSpacing       = -20,
         columnAnchorPoint   = "LEFT",

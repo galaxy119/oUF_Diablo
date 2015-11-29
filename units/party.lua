@@ -39,10 +39,17 @@
 
     --health
     local h = CreateFrame("StatusBar", nil, self)
-    h:SetPoint("TOP",0,-21.9)
-    h:SetPoint("LEFT",24.5,0)
-    h:SetPoint("RIGHT",-24.5,0)
-    h:SetPoint("BOTTOM",0,28.7)
+	if self.cfg.vertical == true then
+	 h:SetPoint("TOP",0,-21.9)
+	 h:SetPoint("LEFT",41.5,0)
+	 h:SetPoint("RIGHT",-41.5,0)
+	 h:SetPoint("BOTTOM",0,28.7)
+	else
+     h:SetPoint("TOP",0,-21.9)
+     h:SetPoint("LEFT",24.5,0)
+     h:SetPoint("RIGHT",-24.5,0)
+     h:SetPoint("BOTTOM",0,28.7)
+	end
 
     h:SetStatusBarTexture(cfg.texture)
     h.bg = h:CreateTexture(nil,"BACKGROUND",nil,-6)
@@ -69,10 +76,17 @@
 
     --power
     local h = CreateFrame("StatusBar", nil, self)
-    h:SetPoint("TOP",0,-38.5)
-    h:SetPoint("LEFT",24.5,0)
-    h:SetPoint("RIGHT",-24.5,0)
-    h:SetPoint("BOTTOM",0,21.9)
+	if self.cfg.vertical == true then
+     h:SetPoint("TOP",0,-38.5)
+     h:SetPoint("LEFT",41.5,0)
+     h:SetPoint("RIGHT",-41.5,0)
+     h:SetPoint("BOTTOM",0,21.9)
+	else
+     h:SetPoint("TOP",0,-38.5)
+     h:SetPoint("LEFT",24.5,0)
+     h:SetPoint("RIGHT",-24.5,0)
+     h:SetPoint("BOTTOM",0,21.9)
+	end
 
     h:SetStatusBarTexture(cfg.texture)
 
@@ -180,9 +194,9 @@
     if self.Border then
       self.Leader = func.createIcon(self,"OVERLAY",13,self.Border,"BOTTOMRIGHT","BOTTOMLEFT",16,18,-1)
       if self.cfg.portrait.use3D then
-        self.LFDRole = func.createIcon(self.BorderHolder,"OVERLAY",12,self.Portrait,"BOTTOM","BOTTOM",0,-20.5,5)
+        self.LFDRole = func.createIcon(self.BorderHolder,"OVERLAY",12,self.Health,"CENTER","CENTER",0,0,5)
       else
-        self.LFDRole = func.createIcon(self.PortraitHolder,"OVERLAY",12,self.Portrait,"BOTTOM","BOTTOM",0,-20.5,5)
+        self.LFDRole = func.createIcon(self.PortraitHolder,"OVERLAY",12,self.Health,"CENTER","CENTER",0,0,5)
       end
     else
       self.Leader = func.createIcon(self,"BACKGROUND",13,self,"RIGHT","LEFT",16,-18,-1)
@@ -218,6 +232,7 @@
     func.applyDragFunctionality(partyDragFrame)
     table.insert(oUF_Diablo_Units,"oUF_DiabloPartyDragFrame") --add frames to the slash command function
 
+	if cfg.units.party.vertical == true then
     local party = oUF:SpawnHeader(
       "oUF_DiabloPartyHeader",
       nil,
@@ -226,7 +241,24 @@
       "showSolo",           attr.showSolo,
       "showParty",          attr.showParty,
       "showRaid",           attr.showRaid,
-      "point",              attr.point,
+      "point",              "TOP",
+      "oUF-initialConfigFunction", ([[
+        self:SetWidth(%d)
+        self:SetHeight(%d)
+        self:SetScale(%f)
+      ]]):format(228, 64, cfg.units.party.scale)
+    )
+    party:SetPoint("TOPLEFT",partyDragFrame,0,0)
+ else
+     local party = oUF:SpawnHeader(
+      "oUF_DiabloPartyHeader",
+      nil,
+      attr.visibility,
+      "showPlayer",         attr.showPlayer,
+      "showSolo",           attr.showSolo,
+      "showParty",          attr.showParty,
+      "showRaid",           attr.showRaid,
+      "point",              "LEFT",
       "oUF-initialConfigFunction", ([[
         self:SetWidth(%d)
         self:SetHeight(%d)
@@ -235,3 +267,4 @@
     )
     party:SetPoint("TOPLEFT",partyDragFrame,0,0)
   end
+ end

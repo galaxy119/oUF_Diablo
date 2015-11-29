@@ -404,7 +404,11 @@ end
   func.createPortrait = function(self)
 
     local back = CreateFrame("Frame",nil,self)
-    back:SetSize(self.cfg.width,self.cfg.width)
+    if cfg.units.party.vertical == false then
+		back:SetPoint("BOTTOM", self, "TOP", 0, -35)
+	else
+		back:SetPoint("BOTTOM", self, "LEFT", -12, -15)
+	end
     back:SetPoint("BOTTOM", self, "TOP", 0, -35)
     self.PortraitHolder = back
 
