@@ -112,27 +112,24 @@
 
   --create aura watch func
    local createAuraWatch = function(self)
-	local auras = {}
-	local spellIDs
-    if cfg.playerclass == "WARRIOR" then --WARRIOR
 
-	elseif cfg.playerclass == "PRIEST" then
-		spellIDs = {
-			139, -- Renew
-			17, -- Power Word: Shield
-			41635, -- Prayer of Mending
-		} 
-
-	elseif cfg.playerclass == "PALADIN" then
-		spellIDs = {
-			148039, -- Sacred Shield
-			53563, -- Beacon of Light
-			157007, -- Beacon of Insight
-			86273, -- Illuminated Healing
-			6940, -- Hand of Sacrifice
-			114039, -- Hand of Purity
-			156910, -- Beacon of Faith
+    if cfg.playerclass == "PRIEST" then
+      local auras = {}
+      local spellIDs = {
+        139, -- Renew
       }
+    elseif cfg.playerclass == "PALADIN" then
+      local auras = {}
+      local spellIDs = {
+        148039, -- Sacred Shield
+        53563, -- Beacon of Light
+        157007, -- Beacon of Insight
+        86273, -- Illuminated Healing
+        6940, -- Hand of Sacrifice
+        114039, -- Hand of Purity
+        156910, -- Beacon of Faith
+      }
+
       local dir = {
         [1] = {size = 15, pos = "CENTER",       x = 0, y = 3 },
         [2] = {size = 15, pos = "CENTER",       x = 15, y = 3 },
@@ -141,7 +138,6 @@
         [3] = {size = 15, pos = "CENTER",       x = -30, y = 3 },
         [6] = {size = 15, pos = "CENTER",       x = -30, y = 3 },
         [7] = {size = 15, pos = "CENTER",       x = 15, y = 3 },
-        [8] = {size = 15, pos = "CENTER",       x = 0, y = 3 },
       }
 
       auras.onlyShowPresent = true
@@ -391,9 +387,9 @@
     end
 
     --icons
-    self.RaidIcon = func.createIcon(self.Health,"TOOLTIP",14,self.Health,"BOTTOM","TOP",0,-6,-1)
+    self.RaidIcon = func.createIcon(self.Health,"TOOLTIP",14,self.Health,"CENTER","CENTER",0,0,-1)
     self.ReadyCheck = func.createIcon(self.Health,"TOOLTIP",24,self.Health,"CENTER","CENTER",0,0,-1)
-    self.LFDRole = func.createIcon(self.Health,"TOOLTIP",12,self.Health,"TOP","BOTTOM",0,-2,-1)
+    self.LFDRole = func.createIcon(self.Health,"OVERLAY",14,self.Health,"CENTER","CENTER",0,0,-1)
     self.LFDRole:SetTexture("Interface\\AddOns\\oUF_Diablo\\media\\lfd_role")
     self.LFDRole:SetDesaturated(1)
 
@@ -439,6 +435,7 @@
         "yOffset",            attr.yOffset,
         "xoffset",            attr.xoffset,
         "groupFilter",        tostring(i),
+       
         "unitsPerColumn",     attr.unitsPerColumn,
         --"columnSpacing",      attr.columnSpacing,
         --"columnAnchorPoint",  attr.columnAnchorPoint,
@@ -463,22 +460,6 @@
       groups[i] = group
     end
 
-    local updateRaidScale = CreateFrame("Frame")
-    updateRaidScale:RegisterEvent("GROUP_ROSTER_UPDATE")
-    updateRaidScale:RegisterEvent("PLAYER_ENTERING_WORLD")
-    updateRaidScale:SetScript("OnEvent", function(self)
-      if(InCombatLockdown()) then
-        self:RegisterEvent("PLAYER_REGEN_ENABLED")
-      else
-        self:UnregisterEvent("PLAYER_REGEN_ENABLED")
-        local num = GetNumGroupMembers()
-        local scale = (100-num)/100*cfg.units.raid.scale
-        for idx, group in pairs(groups) do
-          if group then
-            group:SetScale(scale)
-          end
-        end
-      end
-    end)    
+    
     
   end

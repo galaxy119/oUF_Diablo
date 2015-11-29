@@ -30,7 +30,7 @@
     classcolored        = true,  -- true   -> override the bright color with the unit specific color (class, faction, happiness, threat), if false uses the predefined color
     useBrightForeground = true,  -- true   -> use bright color in foreground and dark color in background
                                  -- false  -> use dark color in foreground and bright color in background
-    threatColored       = true,  -- true/false -> enable threat coloring of the health plate for raidframes
+    threatColored       = false,  -- true/false -> enable threat coloring of the health plate for raidframes
   }
 
   --frames have a new highlight that fades on hp loss, if that is still not enough you can adjust a multiplier here
@@ -59,13 +59,13 @@
         show = true,
         smooth = true,
       },
-	  healprediction = { --WIP - Not yet ready for Implementation
+	     healprediction = { --WIP - Not yet ready for Implementation
         show = false,
         color = {
           myself  = {r = 0, g = 1, b = 0, a = 1 },
           other   = {r = 0, g = 1, b = 0, a = 0.7 },
         },
-      },
+		},
       icons = {
         pvp = {
           show = true,
@@ -83,7 +83,7 @@
       castbar = {
         show = true,
         hideDefault = true, --if you hide the oUF_Diablo castbar, should the Blizzard castbar be shown?
-        latency = true,
+        latency = false,
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar256_2",
         scale = 1/1, --divide 1 by current unit scale if you want to prevent scaling of the castbar based on unit scale
         color = {
@@ -131,7 +131,7 @@
       holypower = { --class bar PALADIN
         show = true,
         scale = 0.40,
-        color = {r = 200/255, g = 135/255, b = 190/255, },
+        color = {r = 255/255, g = 133/255, b = 0/255, },
         pos = { a1 = "BOTTOM", a2 = "BOTTOM", af = "UIParent", x = 0, y = 650 },
         combat          = { --fade the bar in/out in combat/out of combat
           enable          = false,
@@ -224,7 +224,7 @@
         actionbarbackground = {
           show = true,
           pos = { a1 = "BOTTOM", a2 = "BOTTOM", af = "UIParent", x = 1, y = 0 },
-          scale = 1.2,
+          scale = 1.5,
         },
         angel = {
           show = true,
@@ -258,13 +258,13 @@
       health = {
 	frequentUpdates = true,
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar256_3",
-        tag = "[diablo:hpval]",
+        tag = "[diablo:hpval]", 
       },
-	  healper = {
-	frequentUpdates = true,
-		texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar256_3",
-		tag = "[perhp]%",
-	  },
+	     healper = {
+ frequentUpdates = true,
+  texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar256_3",
+  tag = "[perhp]%",
+   },
       power = {
 	frequentUpdates = true,
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",
@@ -272,10 +272,10 @@
       },
       auras = {
         show = true,
-        size = 15,
+        size = 20,
         onlyShowPlayerBuffs = false,
         showStealableBuffs = true,
-        onlyShowPlayerDebuffs = false,
+        onlyShowPlayerDebuffs = true,
         showDebuffType = false,
         desaturateDebuffs = false,
         buffs = {
@@ -305,7 +305,7 @@
       },
       portrait = {
         pos = { a1 = "CENTER", a2 = "CENTER", af = "UIParent", x = 100, y = 0 },
-        size = 50,
+        size = 75,
         show = true,
         use3D = false,
       },
@@ -333,13 +333,14 @@
       scale = 1.3,
       pos = { a1 = "BOTTOM", a2 = "BOTTOM", af = "UIParent", x = -195, y = 250 },
       auras = {
-        show = true,
+        show = false,
         size = 22,
         onlyShowPlayerDebuffs = false,
         showDebuffType = false,
       },
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
+        
       },
       power = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",
@@ -368,6 +369,7 @@
       },
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
+        
       },
       power = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",
@@ -381,7 +383,7 @@
       },
       portrait = {
         show = true,
-        use3D = true,
+        use3D = false,
       },
       castbar = {
         show = false,
@@ -413,7 +415,7 @@
         size            = 20,
       },
       auras = {
-        show = true,
+        show = false,
         size = 22,
         onlyShowPlayerDebuffs = false,
         showDebuffType = false,
@@ -423,13 +425,14 @@
       },
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
+        
       },
       power = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",
       },
       portrait = {
-        show = true,
-        use3D = true,
+        show = false,
+        use3D = false,
       },
       castbar = {
         show = true,
@@ -472,6 +475,7 @@
       },
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
+       
       },
       power = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",
@@ -495,6 +499,7 @@
       },
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
+        
       },
       power = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
@@ -509,9 +514,9 @@
     party = {
       show = true,
       alpha = {
-        notinrange = 0.5,
+        notinrange = 1,
       },
-      scale = 1.1,
+      scale = 1.0,
       pos = { a1 = "TOPLEFT", a2 = "TOPLEFT", af = "UIParent", x = 5, y = -77 },
       aurawatch = {
         show            = true,
@@ -528,6 +533,7 @@
       },
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
+        
       },
       power = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",
@@ -570,12 +576,13 @@
         chains = false, --should the raidframe include the chain textures?
       },
       alpha = {
-        notinrange = 0.4,
+        notinrange = 1,
       },
-      scale = 1.2,
+      scale = 1.01,
       pos = { a1 = "TOPLEFT", a2 = "TOPLEFT", af = "UIParent", x = 5, y = -5 },
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
+        
       },
       power = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",

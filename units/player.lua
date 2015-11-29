@@ -563,9 +563,6 @@
     --add self to unit container (maybe access to that unit is needed in another style)
     unit.player = self
 
-    --add heal prediction
-    func.healPrediction(self)
-
   end
 
   ---------------------------------------------

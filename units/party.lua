@@ -180,13 +180,13 @@
     if self.Border then
       self.Leader = func.createIcon(self,"OVERLAY",13,self.Border,"BOTTOMRIGHT","BOTTOMLEFT",16,18,-1)
       if self.cfg.portrait.use3D then
-        self.LFDRole = func.createIcon(self.BorderHolder,"OVERLAY",12,self.Portrait,"TOP","BOTTOM",0,5,5)
+        self.LFDRole = func.createIcon(self.BorderHolder,"OVERLAY",12,self.Portrait,"BOTTOM","BOTTOM",0,-20.5,5)
       else
-        self.LFDRole = func.createIcon(self.PortraitHolder,"OVERLAY",12,self.Portrait,"TOP","BOTTOM",0,5,5)
+        self.LFDRole = func.createIcon(self.PortraitHolder,"OVERLAY",12,self.Portrait,"BOTTOM","BOTTOM",0,-20.5,5)
       end
     else
-      self.Leader = func.createIcon(self,"OVERLAY",13,self,"RIGHT","LEFT",16,-18,-1)
-      self.LFDRole = func.createIcon(self,"OVERLAY",12,self,"RIGHT","LEFT",16,18,-1)
+      self.Leader = func.createIcon(self,"BACKGROUND",13,self,"RIGHT","LEFT",16,-18,-1)
+      self.LFDRole = func.createIcon(self,"BACKGROUND",12,self,"RIGHT","LEFT",16,18,-1)
     end
     self.LFDRole:SetTexture("Interface\\AddOns\\oUF_Diablo\\media\\lfd_role")
     --self.LFDRole:SetDesaturated(1)

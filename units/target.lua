@@ -69,7 +69,7 @@
     h:SetPoint("BOTTOM",0,28.7)
 
     h:SetStatusBarTexture(cfg.texture)
-    h.bg = h:CreateTexture(nil,"BACKGROUND",nil,-6)
+    h.bg = h:CreateTexture(nil,"TOOLTIP",nil,-6)
     h.bg:SetTexture(cfg.texture)
     h.bg:SetAllPoints(h)
 
@@ -141,19 +141,19 @@
     local hpval = func.createFontString(self.Health, cfg.font, 7, "THINOUTLINE")
     hpval:SetPoint("LEFT", -20,20)
 
+    local perphp = func.createFontString(self.Health, cfg.font, 10, "THINOUTLINE") 
+    perphp:SetPoint("CENTER", 0,0)    
+
     local perpp = func.createFontString(self.Health, cfg.font, 7, "THINOUTLINE")
     perpp:SetPoint("RIGHT", 25,20)
 
-	local perhp = func.createFontString(self.Health, cfg.font, 7, "THINOUTLINE")
-	perhp:SetPoint("CENTER", 0,0)
-	
     local classtext = func.createFontString(self, cfg.font, 13, "THINOUTLINE")
     classtext:SetPoint("BOTTOM", self, "TOP", 0, -15)
 
     self:Tag(name, "[diablo:name]")
     self:Tag(hpval, self.cfg.health.tag or "")
+    self:Tag(perphp, self.cfg.healper.tag or "")
     self:Tag(perpp, self.cfg.power.tag or "")
-	self:Tag(perhp, self.cfg.healper.tag or "")
     self:Tag(classtext, "[diablo:classtext]")
 
   end
@@ -336,7 +336,7 @@
     func.createDebuffGlow(self)
 
     --icons
-    self.RaidIcon = func.createIcon(self,"TOOLTIP",24,self.Name,"BOTTOM","TOP",0,0,-1)
+    self.RaidIcon = func.createIcon(self,"BACKGROUND",24,self.Name,"BOTTOM","TOP",0,0,-1)
 
     --create portrait
     if self.cfg.portrait.show then

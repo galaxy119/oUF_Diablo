@@ -224,7 +224,6 @@ func.createAuraWatch = function(self)
     local spellIDs
     if cfg.playerclass == "PRIEST" then --Priest
         spellIDs = {
-	    41635, -- Prayer of Mending
             139, -- Renew
             17, -- Power Word: Shield
             33076, -- Prayer of Mending
