@@ -259,17 +259,32 @@
 	frequentUpdates = true,
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar256_3",
         tag = "[diablo:hpval]", 
+		fontSize = 7,
+		point = "LEFT",
+		x = -20,
+		y = 20
       },
 	     healper = {
     frequentUpdates = true,
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar256_3",
         tag = "[perhp]%",
+		fontSize = 7,
+		point = "CENTER",
+		x = 0,
+		y = 0,
       },
       power = {
 	frequentUpdates = true,
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",
         tag = "[perpp]%", --more tags see oUF/elements/tags.lua | example: "[curpp] / [perpp]%" or "[diablo:ppval]"
+		fontSize = 10,
+		point = "RIGHT",
+		x = 25,
+		y = 20,
       },
+	  misc = {
+		classFontSize = 13,
+	  },
       auras = {
         show = true,
         size = 20,

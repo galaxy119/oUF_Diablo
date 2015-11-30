@@ -132,22 +132,24 @@
   --create health power strings
   local createHealthPowerStrings = function(self)
 
+	local cfg = self.cfg	
+
     local name = func.createFontString(self, cfg.font, 16, "THINOUTLINE")
     name:SetPoint("BOTTOM", self, "TOP", 0, 0)
     name:SetPoint("LEFT", self.Health, 0, 0)
     name:SetPoint("RIGHT", self.Health, 0, 0)
     self.Name = name
 
-    local hpval = func.createFontString(self.Health, cfg.font, 7, "THINOUTLINE")
-    hpval:SetPoint("LEFT", -20,20)
+    local hpval = func.createFontString(self.Health, cfg.font, cfg.health.fontSize, "THINOUTLINE")
+    hpval:SetPoint(cfg.health.point, cfg.health.x,cfg.health.y)
 
-    local perphp = func.createFontString(self.Health, cfg.font, 10, "THINOUTLINE") 
-    perphp:SetPoint("CENTER", 0,0)    
+    local perphp = func.createFontString(self.Health, cfg.font, cfg.healper.fontSize, "THINOUTLINE") 
+    perphp:SetPoint(cfg.healper.point, cfg.healper.x,cfg.healper.y)    
 
-    local perpp = func.createFontString(self.Health, cfg.font, 7, "THINOUTLINE")
-    perpp:SetPoint("RIGHT", 25,20)
+    local perpp = func.createFontString(self.Health, cfg.font, cfg.power.fontSize, "THINOUTLINE")
+    perpp:SetPoint(cfg.power.point, cfg.power.x,cfg.power.y)
 
-    local classtext = func.createFontString(self, cfg.font, 13, "THINOUTLINE")
+    local classtext = func.createFontString(self, cfg.font, cfg.misc.classFontSize, "THINOUTLINE")
     classtext:SetPoint("BOTTOM", self, "TOP", 0, -15)
 
     self:Tag(name, "[diablo:name]")

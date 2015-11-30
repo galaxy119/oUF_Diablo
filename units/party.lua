@@ -108,10 +108,10 @@
   --create health power strings
   local createHealthPowerStrings = function(self)
 
-    local name = func.createFontString(self, cfg.font, 14, "THINOUTLINE")
-    name:SetPoint("BOTTOM", self, "TOP", 0, -13)
-    name:SetPoint("LEFT", self.Health, 0, 0)
-    name:SetPoint("RIGHT", self.Health, 0, 0)
+    local name = func.createFontString(self.Health, cfg.font, 14, "THINOUTLINE")
+    name:SetPoint("CENTER", self.Health, "CENTER", 0, 0)
+    name:SetPoint("CENTER", self.Health, 0, 0)
+    name:SetPoint("CENTER", self.Health, 0, 0)
     self.Name = name
 
     local hpval = func.createFontString(self.Health, cfg.font, 11, "THINOUTLINE")
