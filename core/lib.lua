@@ -293,6 +293,10 @@ func.createAuraWatch = function(self)
         local yOffset = math.floor(i / columns) * yGrowth +60
         icon:SetPoint(iconAnchorPoint, self, parentAnchorPoint, xOffset, yOffset)
         -- Set any other AuraWatch icon settings
+		local cd = CreateFrame("Cooldown", nil, icon)
+		cd:SetFrameStrata("TOOLTIP")
+		cd:SetAllPoints(icon)
+		icon.cd = cd
     end
     --call aurawatch
     self.AuraWatch = auras
@@ -458,7 +462,11 @@ end
 
     end
 
-    self.Name:SetPoint("BOTTOM", self, "TOP", 0, self.cfg.width-53)
+	if self.cfg.vertical == true then
+    self.Name:SetPoint("CENTER", 0, 0)
+	else
+	self.Name:SetPoint("BOTTOM", self, "TOP", 0, self.cfg.width-53)
+	end
 
   end
 

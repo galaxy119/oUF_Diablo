@@ -546,10 +546,18 @@
       },
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
+--		tag = "[diablo:misshp]",	--Uncomment this line to enable missing hp (or other health values) on party health bars
+		fontSize = 11,
+		point = "RIGHT",
+		x = -3,
+		y = 0,
       },
       power = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",
       },
+	  misc = {
+		NameFontSize = 14,
+	  },
       portrait = {
         show = true,
         use3D = false,

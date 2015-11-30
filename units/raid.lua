@@ -112,33 +112,50 @@
 
   --create aura watch func
    local createAuraWatch = function(self)
-
-    if cfg.playerclass == "PRIEST" then
+   
       local auras = {}
-      local spellIDs = {
+	  local spellIDs
+    if cfg.playerclass == "PRIEST" then 
+      spellIDs = {
         139, -- Renew
+		17, -- Power Word Shield
+		77489, -- Echo of Light
+		41635, --Prayer of mending
+		
       }
     elseif cfg.playerclass == "PALADIN" then
-      local auras = {}
-      local spellIDs = {
+      spellIDs = {
         148039, -- Sacred Shield
         53563, -- Beacon of Light
-        157007, -- Beacon of Insight
-        86273, -- Illuminated Healing
+		86273, -- Illuminated Healing
         6940, -- Hand of Sacrifice
         114039, -- Hand of Purity
         156910, -- Beacon of Faith
+		157007, -- Beacon of Insight
       }
-
-      local dir = {
-        [1] = {size = 15, pos = "CENTER",       x = 0, y = 3 },
-        [2] = {size = 15, pos = "CENTER",       x = 15, y = 3 },
-        [5] = {size = 15, pos = "CENTER",       x = -15, y = 3 },
-        [4] = {size = 15, pos = "CENTER",       x = 30, y = 3 },
-        [3] = {size = 15, pos = "CENTER",       x = -30, y = 3 },
-        [6] = {size = 15, pos = "CENTER",       x = -30, y = 3 },
-        [7] = {size = 15, pos = "CENTER",       x = 15, y = 3 },
-      }
+	elseif cfg.playerclass == "DRUID" then
+		spellIDs = {
+		33763, -- Lifebloom
+		774, -- Rejuvination
+		8936, -- Regrowth
+		102342, -- Ironback
+		102351, -- Cenarion Ward
+		48438, -- Wild Growth
+		162359, -- Genesis
+		}
+	elseif cfg.playerclass == "SHAMAN" then
+		spellIDs = {
+		974, -- Earth Shield
+		61295, -- Riptide
+		}
+	elseif cfg.playerclass == "MONK" then
+		spellIDs = {
+		}
+	else -- Non Healer Classes
+		spellIDs = {
+		
+		}
+	end
 
       auras.onlyShowPresent = true
       auras.presentAlpha = .75

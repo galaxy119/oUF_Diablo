@@ -108,14 +108,14 @@
   --create health power strings
   local createHealthPowerStrings = function(self)
 
-    local name = func.createFontString(self.Health, cfg.font, 14, "THINOUTLINE")
+    local name = func.createFontString(self.Health, cfg.font, self.cfg.misc.NameFontSize, "THINOUTLINE")
     name:SetPoint("CENTER", self.Health, "CENTER", 0, 0)
     name:SetPoint("CENTER", self.Health, 0, 0)
     name:SetPoint("CENTER", self.Health, 0, 0)
     self.Name = name
 
-    local hpval = func.createFontString(self.Health, cfg.font, 11, "THINOUTLINE")
-    hpval:SetPoint("RIGHT", -2,0)
+    local hpval = func.createFontString(self.Health, cfg.font, self.cfg.health.fontSize, "THINOUTLINE")
+    hpval:SetPoint(self.cfg.health.point, self.cfg.health.x,self.cfg.health.y)
 
     self:Tag(name, "[diablo:name]")
     self:Tag(hpval, self.cfg.health.tag or "")
@@ -159,7 +159,11 @@
         if(InCombatLockdown()) then
           self.PortraitHolder:RegisterEvent("PLAYER_REGEN_ENABLED")
         else
-          self:SetHitRectInsets(0, 0, -100, 0)
+          if self.cfg.vertical then
+				self:SetHitRectInsets(-75,0, -45, 0)
+			else 
+				self:SetHitRectInsets(0,0,-100,0)
+			end
         end      
         self.PortraitHolder:SetScript("OnEvent", function(...)
           self.PortraitHolder:UnregisterEvent("PLAYER_REGEN_ENABLED")
