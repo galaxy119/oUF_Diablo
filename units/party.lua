@@ -158,7 +158,7 @@
           self.PortraitHolder:RegisterEvent("PLAYER_REGEN_ENABLED")
         else
 			if self.cfg.vertical then
-				self:SetHitRectInsets(-75,0, -45, 0)
+				self:SetHitRectInsets(-35,0, -17, 0)
 			else 
 				self:SetHitRectInsets(0,0,-100,0)
 			end
@@ -173,7 +173,9 @@
     --auras
     if self.cfg.auras.show then
       func.createDebuffs(self)
-      self.Debuffs.PostCreateIcon = func.createAuraIcon
+	  self.Debuffs.PostCreateIcon = func.createAuraIcon
+	  func.createBuffs(self)
+	  self.Buffs.PostCreateIcon = func.createAuraIcon
     end
 
     --aurawatch

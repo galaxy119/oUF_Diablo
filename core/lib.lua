@@ -74,16 +74,35 @@
 
   --create debuff func
   func.createDebuffs = function(self)
-    local f = CreateFrame("Frame", nil, self)
+  if self.cfg.vertical then
+	local f = CreateFrame("Frame", nil, self)
     f.size = self.cfg.auras.size
     if self.cfg.style == "targettarget" then
       f.num = 8
     else
-      f.num = 4
+      f.num = cfg.units.party.auras.number
     end
     f:SetHeight((f.size+5)*(f.num/4))
     f:SetWidth((f.size+5)*4)
-    f:SetPoint("TOP", self, "BOTTOM", 2.5, 5)
+    f:SetPoint("TOP", self, "RIGHT", 50, -5)
+    f.initialAnchor = "TOPLEFT"
+    f["growth-x"] = "RIGHT"
+    f["growth-y"] = "DOWN"
+    f.spacing = 5
+    f.showDebuffType = self.cfg.auras.showDebuffType
+    f.onlyShowPlayer = self.cfg.auras.onlyShowPlayerDebuffs
+    self.Debuffs = f
+  else
+	local f = CreateFrame("Frame", nil, self)
+    f.size = self.cfg.auras.size
+    if self.cfg.style == "targettarget" then
+      f.num = 8
+    else
+      f.num = cfg.units.party.auras.number
+    end
+    f:SetHeight((f.size+5)*(f.num/9))
+    f:SetWidth((f.size+5)*4)
+    f:SetPoint("TOP", self, "RIGHT", -60, -97)
     f.initialAnchor = "TOPLEFT"
     f["growth-x"] = "RIGHT"
     f["growth-y"] = "DOWN"
@@ -92,19 +111,21 @@
     f.onlyShowPlayer = self.cfg.auras.onlyShowPlayerDebuffs
     self.Debuffs = f
   end
+  end
 
   --create buff func
   func.createBuffs = function(self)
+  if self.cfg.vertical == false then
     local f = CreateFrame("Frame", nil, self)
     f.size = self.cfg.auras.size
     if self.cfg.style == "targettarget" then
-      f.num = 6
+      f.num = 8
     else
-      f.num = 3
+      f.num = self.cfg.auras.number
     end
-    f:SetWidth((f.size+5)*(f.num/3))
-    f:SetHeight((f.size+5)*3)
-    f:SetPoint("TOPLEFT", self, "TOPRIGHT", -13, 66)
+    f:SetHeight((f.size+5)*(f.num/9))
+    f:SetWidth((f.size+5)*4)
+    f:SetPoint("TOP", self, "RIGHT", -60, -17)
     f.initialAnchor = "TOPLEFT"
     f["growth-x"] = "RIGHT"
     f["growth-y"] = "DOWN"
@@ -112,6 +133,25 @@
     f.showBuffType = self.cfg.auras.showBuffType
     f.onlyShowPlayer = self.cfg.auras.onlyShowPlayerBuffs
     self.Buffs = f
+  else
+	local f = CreateFrame("Frame", nil, self)
+    f.size = self.cfg.auras.size
+    if self.cfg.style == "targettarget" then
+      f.num = 8
+    else
+      f.num = self.cfg.auras.number
+    end
+    f:SetHeight((f.size+5)*(f.num/9))
+    f:SetWidth((f.size+5)*9)
+    f:SetPoint("TOP", self, "RIGHT", 117.5, 30)
+    f.initialAnchor = "TOPLEFT"
+    f["growth-x"] = "RIGHT"
+    f["growth-y"] = "UP"
+    f.spacing = 5
+    f.showBuffType = self.cfg.auras.showBuffType
+    f.onlyShowPlayer = self.cfg.auras.onlyShowPlayerBuffs
+    self.Buffs = f
+  end
   end
 
   --Desaturated and Button CD
@@ -140,6 +180,7 @@
     --count helper frame, this push the count fontstring over the cooldown spiral
     button.countFrame = CreateFrame("Frame",nil,button)
     button.countFrame:SetAllPoints()
+	button.countFrame:SetFrameStrata("TOOLTIP")
     button.countFrame:SetFrameLevel(button.cd:GetFrameLevel()+2)
     --button count
     button.count:SetParent(button.countFrame)
@@ -279,6 +320,7 @@ func.createAuraWatch = function(self)
  
     -- Set any other AuraWatch settings
     auras.icons = {}
+   if cfg.units.party.vertical == false then
     local columns = 2
     local xGrowth = 19
     local yGrowth = -20
@@ -289,7 +331,7 @@ func.createAuraWatch = function(self)
         icon:SetFrameStrata("BACKGROUND")
         icon.spellID = sid
         -- set the dimensions and positions
-        icon:SetSize(self.cfg.aurawatch.size,self.cfg.aurawatch.size)
+        icon:SetSize(self.cfg.auras.size,self.cfg.auras.size)
         auras.icons[sid] = icon
         local xOffset = (i % columns) * xGrowth
         local yOffset = math.floor(i / columns) * yGrowth +60
@@ -300,7 +342,29 @@ func.createAuraWatch = function(self)
 		cd:SetAllPoints(icon)
 		icon.cd = cd
     end
-	
+   else
+	local columns = 8
+	local xGrowth = 19
+	local yGrowth = -20
+	local parentAnchorPoint = "RIGHT"
+	local iconAnchorPoint = "RIGHT"
+	for i, sid in pairs(spellIDs) do
+		local icon = CreateFrame("Frame", nil, self)
+		icon:SetFrameStrata("BACKGROUND")
+		icon.spellID = sid
+		--set the dimensions and positions
+		icon:SetSize(self.cfg.auras.size,self.cfg.auras.size)
+		auras.icons[sid] = icon
+		local xOffset = (i % columns) * xGrowth
+		local yOffset = math.floor(i / columns) * yGrowth +15
+		icon:SetPoint(iconAnchorPoint, self, parentAnchorPoint, xOffset, yOffset)
+		--Set any other AuraWatch icon settings
+		local cd = CreateFrame("Cooldown", nil, icon)
+		cd:SetFrameStrata("TOOLTIP")
+		cd:SetAllPoints(icon)
+		icon.cd = cd
+	end
+   end
 	auras.PostCreateIcon = func.createAuraIcon
 
     --call aurawatch
@@ -418,7 +482,7 @@ end
 	if cfg.units.party.vertical == false then
 		back:SetPoint("BOTTOM", self, "TOP", 0, -35)
 	else
-		back:SetPoint("BOTTOM", self, "LEFT", -12, -15)
+		back:SetPoint("BOTTOM", self, "LEFT", 10, -38)
 	end
     self.PortraitHolder = back
 
@@ -451,8 +515,8 @@ end
 
     else
       self.Portrait = back:CreateTexture(nil,"BACKGROUND",nil,-7)
-      self.Portrait:SetPoint("TOPLEFT",back,"TOPLEFT",27,-27)
-      self.Portrait:SetPoint("BOTTOMRIGHT",back,"BOTTOMRIGHT",-27,27)
+      self.Portrait:SetPoint("TOPLEFT",back,"TOPLEFT",21,-21)
+      self.Portrait:SetPoint("BOTTOMRIGHT",back,"BOTTOMRIGHT",-21,21)
       self.Portrait:SetTexCoord(0.15,0.85,0.15,0.85)
 
       local border = back:CreateTexture(nil,"BACKGROUND",nil,-6)
@@ -735,10 +799,24 @@ end
   --total absorb
   func.totalAbsorb = function(self)
     if not self.cfg.totalabsorb or (self.cfg.totalabsorb and not self.cfg.totalabsorb.show) then return end
+	
     local w = self.Health:GetWidth()
-    if w == 0 then
-      w = self:GetWidth()-24.5-24.5 --raids and party have no width on the health frame for whatever reason, thus use self and subtract the setpoint values
-    end
+	
+	if self.cfg.style == "party" then
+		if cfg.units.party.verical == false then
+			if w == 0 then
+				w = self:GetWidth()-24.5-24.5 --raids and party have no width on the health frame for whatever reason, thus use self and subtract the setpoint values
+			end
+		else
+			if w == 0 then
+				w = self:GetWidth()-60-24.5
+			end
+		end
+	else
+		if w == 0 then
+			w = self:GetWidth()-24.5-24.5 --raids and party have no width on the health frame for whatever reason, thus use self and subtract the setpoint values
+		end
+	end
     local absorbBar = CreateFrame("StatusBar", nil, self.Health)
     --new anchorpoint, absorb will now overlay the healthbar from right to left
     absorbBar:SetFrameLevel(self.Health:GetFrameLevel()+1)

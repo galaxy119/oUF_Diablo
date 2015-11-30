@@ -156,7 +156,15 @@
 		
 		}
 	end
-
+      local dir = {
+        [1] = {size = 15, pos = "CENTER",       x = 0, y = 3 },
+        [2] = {size = 15, pos = "CENTER",       x = 15, y = 3 },
+        [3] = {size = 15, pos = "CENTER",       x = -15, y = 3 },
+        [4] = {size = 15, pos = "CENTER",       x = 30, y = 3 },
+        [5] = {size = 15, pos = "CENTER",       x = -30, y = 3 },
+        [6] = {size = 15, pos = "CENTER",       x = 15, y = 3 },
+        [7] = {size = 15, pos = "CENTER",       x = 15, y = 3 },
+      }
       auras.onlyShowPresent = true
       auras.presentAlpha = .75
 

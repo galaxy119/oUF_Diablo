@@ -288,11 +288,11 @@
 	  },
       auras = {
         show = true,
-        size = 20,
+        size = 15,
         onlyShowPlayerBuffs = false,
         showStealableBuffs = true,
         onlyShowPlayerDebuffs = true,
-        showDebuffType = false,
+        showDebuffType = true,
         desaturateDebuffs = false,
         buffs = {
           pos = { a1 = "BOTTOMLEFT", a2 = "TOPRIGHT", x = 0, y = -15 },
@@ -535,17 +535,18 @@
       scale = 1.0,
       pos = { a1 = "TOPLEFT", a2 = "TOPLEFT", af = "UIParent", x = 5, y = -77 },
       aurawatch = {
-        show            = true,
+        show            = false,
         size            = 18,
       },
       auras = {
         show = true,
         size = 22,
         onlyShowPlayerDebuffs = false,
-        showDebuffType = false,
+        showDebuffType = true,
         showBuffs = true,
-        onlyShowPlayerBuffs = false,
-	showBuffType = false,
+        onlyShowPlayerBuffs = true,
+		showBuffType = false,
+		number = 15,
       },
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
@@ -567,9 +568,9 @@
 		width = 100,
       },
       attributes = {
-        visibility          = "custom [group:party,nogroup:raid] show;show",  --show this header in party
-        showPlayer          = true,     --make this true to show player in party
-        showSolo            = true,    --make this true to show while solo (only works if solo is in visiblity aswell
+        visibility          = "custom [group:party,nogroup:raid] show;hide",  --show this header in party
+        showPlayer          = false,     --make this true to show player in party
+        showSolo            = false,    --make this true to show while solo (only works if solo is in visiblity aswell
         showParty           = true,     --make this true to show headerin party
         showRaid            = false,    --show in raid
         point               = "LEFT",
@@ -641,7 +642,7 @@
       },
       attributes = {
         visibility          = "custom [group:raid] show; hide",
-        showPlayer          = false,  --make this true to show player in party
+        showPlayer          = true,  --make this true to show player in party
         showSolo            = false,  --make this true to show while solo (only works if solo is in visiblity aswell
         showParty           = false,  --make this true to show raid in party
         showRaid            = true,   --show in raid
