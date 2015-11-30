@@ -82,6 +82,7 @@
       },
       castbar = {
         show = true,
+		TextSize = 11,
         hideDefault = true, --if you hide the oUF_Diablo castbar, should the Blizzard castbar be shown?
         latency = false,
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar256_2",
@@ -308,6 +309,7 @@
       },
       castbar = {
         show = true,
+		TextSize = 11,
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar256_2",
         scale = 1/1.5, --divide 1 by current unit scale if you want to prevent scaling of the castbar based on unit scale
         color = {
@@ -450,6 +452,7 @@
       },
       castbar = {
         show = true,
+		TextSize = 11,
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar256_2",
         scale = 1/0.85, --divide 1 by current unit scale if you want to prevent scaling of the castbar based on unit scale
         color = {
@@ -524,7 +527,7 @@
 
     --PARTY
     party = {
-      vertical = false, --WIP Not yet ready for implementation; do NOT set to true
+      vertical = true,
       show = true,
       alpha = {
         notinrange = 1,
@@ -564,9 +567,9 @@
 		width = 100,
       },
       attributes = {
-        visibility          = "custom [group:party,nogroup:raid] show;hide",  --show this header in party
-        showPlayer          = false,     --make this true to show player in party
-        showSolo            = false,    --make this true to show while solo (only works if solo is in visiblity aswell
+        visibility          = "custom [group:party,nogroup:raid] show;show",  --show this header in party
+        showPlayer          = true,     --make this true to show player in party
+        showSolo            = true,    --make this true to show while solo (only works if solo is in visiblity aswell
         showParty           = true,     --make this true to show headerin party
         showRaid            = false,    --show in raid
         point               = "LEFT",

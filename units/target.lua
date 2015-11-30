@@ -144,7 +144,7 @@
     local perphp = func.createFontString(self.Health, cfg.font, self.cfg.healper.fontSize, "THINOUTLINE") 
     perphp:SetPoint(self.cfg.healper.point, self.cfg.healper.x,self.cfg.healper.y)    
 
-    local perpp = func.createFontString(self.Health, cfg.font, cfg.power.fontSize, "THINOUTLINE")
+    local perpp = func.createFontString(self.Health, cfg.font, self.cfg.power.fontSize, "THINOUTLINE")
     perpp:SetPoint(self.cfg.power.point, self.cfg.power.x,self.cfg.power.y)
 
     local classtext = func.createFontString(self, cfg.font, self.cfg.misc.classFontSize, "THINOUTLINE")

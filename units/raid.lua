@@ -200,7 +200,6 @@
       --call aurawatch
       self.AuraWatch = auras
     end
-  end
 
   --update health func
   local updateHealth = function(bar, unit, min, max)
@@ -452,7 +451,7 @@
         "yOffset",            attr.yOffset,
         "xoffset",            attr.xoffset,
         "groupFilter",        tostring(i),
-        "maxColumns",         attr.maxColumns
+        "maxColumns",         attr.maxColumns,
         "unitsPerColumn",     attr.unitsPerColumn,
         --"columnSpacing",      attr.columnSpacing,
         --"columnAnchorPoint",  attr.columnAnchorPoint,

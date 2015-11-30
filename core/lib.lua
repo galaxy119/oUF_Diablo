@@ -133,6 +133,7 @@
     --button:SetSize(icons.size,icons.size)
     --button.cd:SetReverse()
     local size = icons.size or button:GetWidth()
+	button.cd:SetFrameStrata("TOOLTIP")
     button.cd:SetPoint("TOPLEFT", 1, -1)
     button.cd:SetPoint("BOTTOMRIGHT", -1, 1)
     button.icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
@@ -224,6 +225,7 @@ func.createAuraWatch = function(self)
     local spellIDs
     if cfg.playerclass == "PRIEST" then --Priest
         spellIDs = {
+	    41635, -- Prayer of Mending
             139, -- Renew
             17, -- Power Word: Shield
             33076, -- Prayer of Mending
@@ -271,7 +273,7 @@ func.createAuraWatch = function(self)
 	spellIDs = { }
     end
  
-    auras.onlyShowPresent = true
+    auras.onlyShowPresent = false
     auras.presentAlpha = 1
     auras.PostCreateIcon = func.createAuraIcon
  
@@ -284,7 +286,7 @@ func.createAuraWatch = function(self)
     local iconAnchorPoint = "TOPRIGHT"
     for i, sid in pairs(spellIDs) do
         local icon = CreateFrame("Frame", nil, self)
-        icon:SetFrameStrata("TOOLTIP")
+        icon:SetFrameStrata("BACKGROUND")
         icon.spellID = sid
         -- set the dimensions and positions
         icon:SetSize(self.cfg.aurawatch.size,self.cfg.aurawatch.size)
@@ -298,6 +300,9 @@ func.createAuraWatch = function(self)
 		cd:SetAllPoints(icon)
 		icon.cd = cd
     end
+	
+	auras.PostCreateIcon = func.createAuraIcon
+
     --call aurawatch
     self.AuraWatch = auras
 end
@@ -406,14 +411,15 @@ end
 
   --create portrait func
   func.createPortrait = function(self)
+  
 
     local back = CreateFrame("Frame",nil,self)
-    if cfg.units.party.vertical == false then
+    back:SetSize(self.cfg.width,self.cfg.width)
+	if cfg.units.party.vertical == false then
 		back:SetPoint("BOTTOM", self, "TOP", 0, -35)
 	else
 		back:SetPoint("BOTTOM", self, "LEFT", -12, -15)
 	end
-    back:SetPoint("BOTTOM", self, "TOP", 0, -35)
     self.PortraitHolder = back
 
     local t = back:CreateTexture(nil,"BACKGROUND",nil,-8)
@@ -445,8 +451,8 @@ end
 
     else
       self.Portrait = back:CreateTexture(nil,"BACKGROUND",nil,-7)
-      self.Portrait:SetPoint("TOPLEFT",back,"TOPLEFT",21,-21)
-      self.Portrait:SetPoint("BOTTOMRIGHT",back,"BOTTOMRIGHT",-21,21)
+      self.Portrait:SetPoint("TOPLEFT",back,"TOPLEFT",27,-27)
+      self.Portrait:SetPoint("BOTTOMRIGHT",back,"BOTTOMRIGHT",-27,27)
       self.Portrait:SetTexCoord(0.15,0.85,0.15,0.85)
 
       local border = back:CreateTexture(nil,"BACKGROUND",nil,-6)
@@ -461,7 +467,6 @@ end
       gloss:SetVertexColor(0.9,0.95,1,0.6)
 
     end
-
 	if self.cfg.vertical == true then
     self.Name:SetPoint("CENTER", 0, 0)
 	else
@@ -556,11 +561,11 @@ end
     c.bg:SetAllPoints(c)
     c.bg:SetVertexColor(f.cfg.castbar.color.bg.r,f.cfg.castbar.color.bg.g,f.cfg.castbar.color.bg.b,f.cfg.castbar.color.bg.a)
 
-    c.Text =  func.createFontString(c, cfg.font, 11, "THINOUTLINE")
+    c.Text =  func.createFontString(c, cfg.font, f.cfg.castbar.TextSize, "THINOUTLINE")
     c.Text:SetPoint("LEFT", 5, 0)
     c.Text:SetJustifyH("LEFT")
 
-    c.Time =  func.createFontString(c, cfg.font, 11, "THINOUTLINE")
+    c.Time =  func.createFontString(c, cfg.font, f.cfg.castbar.TextSize, "THINOUTLINE")
     c.Time:SetPoint("RIGHT", -2, 0)
 
     c.Text:SetPoint("RIGHT", -50, 0)

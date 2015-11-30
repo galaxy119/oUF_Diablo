@@ -50,7 +50,6 @@
      h:SetPoint("RIGHT",-24.5,0)
      h:SetPoint("BOTTOM",0,28.7)
 	end
-
     h:SetStatusBarTexture(cfg.texture)
     h.bg = h:CreateTexture(nil,"BACKGROUND",nil,-6)
     h.bg:SetTexture(cfg.texture)
@@ -87,7 +86,6 @@
      h:SetPoint("RIGHT",-24.5,0)
      h:SetPoint("BOTTOM",0,21.9)
 	end
-
     h:SetStatusBarTexture(cfg.texture)
 
     h.bg = h:CreateTexture(nil,"BACKGROUND",nil,-6)
@@ -109,10 +107,10 @@
   local createHealthPowerStrings = function(self)
 
     local name = func.createFontString(self.Health, cfg.font, self.cfg.misc.NameFontSize, "THINOUTLINE")
-    name:SetPoint("CENTER", self.Health, "CENTER", 0, 0)
-    name:SetPoint("CENTER", self.Health, 0, 0)
-    name:SetPoint("CENTER", self.Health, 0, 0)
-    self.Name = name
+	name:SetPoint("BOTTOM", self, "TOP", 0, -13)
+    name:SetPoint("LEFT", self.Health, 0, 0)
+    name:SetPoint("RIGHT", self.Health, 0, 0)
+	self.Name = name
 
     local hpval = func.createFontString(self.Health, cfg.font, self.cfg.health.fontSize, "THINOUTLINE")
     hpval:SetPoint(self.cfg.health.point, self.cfg.health.x,self.cfg.health.y)
@@ -159,7 +157,7 @@
         if(InCombatLockdown()) then
           self.PortraitHolder:RegisterEvent("PLAYER_REGEN_ENABLED")
         else
-          if self.cfg.vertical then
+			if self.cfg.vertical then
 				self:SetHitRectInsets(-75,0, -45, 0)
 			else 
 				self:SetHitRectInsets(0,0,-100,0)
@@ -193,10 +191,10 @@
     }
 
     --icons
-    self.RaidIcon = func.createIcon(self,"OVERLAY",18,self.Name,"RIGHT","LEFT",0,0,-1)
+    self.RaidIcon = func.createIcon(self,"BACKGROUND",18,self.Name,"RIGHT","LEFT",0,0,-1)
     self.ReadyCheck = func.createIcon(self.Health,"OVERLAY",24,self.Health,"CENTER","CENTER",0,0,-1)
     if self.Border then
-      self.Leader = func.createIcon(self,"OVERLAY",13,self.Border,"BOTTOMRIGHT","BOTTOMLEFT",16,18,-1)
+      self.Leader = func.createIcon(self,"BACKGROUND",13,self.Border,"BOTTOMRIGHT","BOTTOMLEFT",16,18,-1)
       if self.cfg.portrait.use3D then
         self.LFDRole = func.createIcon(self.BorderHolder,"OVERLAY",12,self.Health,"CENTER","CENTER",0,0,5)
       else
