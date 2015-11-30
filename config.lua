@@ -262,9 +262,9 @@
 		fontSize = 7,
 		point = "LEFT",
 		x = -20,
-		y = 20
+		y = 20,
       },
-	     healper = {
+	   healper = {
     frequentUpdates = true,
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar256_3",
         tag = "[perhp]%",
