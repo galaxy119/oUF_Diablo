@@ -509,7 +509,7 @@
 
     --PARTY
     party = {
-      vertical = false,
+      vertical = false, --WIP Not yet ready for implementation; do NOT set to true
       show = true,
       alpha = {
         notinrange = 1,
