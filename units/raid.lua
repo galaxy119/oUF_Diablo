@@ -229,8 +229,13 @@
     if not color then color = { r = 0.5, g = 0.5, b = 0.5, } end
     --dead
     if dead == 1 then
-      bar:SetStatusBarColor(0,0,0,0)
-      bar.bg:SetVertexColor(0,0,0,0)
+	 if cfg.colorswitcher.useBrightForeground then
+	  bar.glow:SetVertexColor(0.3,0,0,0.9)
+      bar:SetStatusBarColor(1,0,0,1)
+      bar.bg:SetVertexColor(0.15,0,0,0.7)
+	 else
+	  bar.glow:SetVertexColor(1,0,0,1)
+	 end
     else
       --alive
       if cfg.colorswitcher.useBrightForeground then
