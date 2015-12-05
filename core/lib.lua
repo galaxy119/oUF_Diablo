@@ -378,12 +378,16 @@ end
     local d = floor(min/max*100)
     local color
     local dead
+	local offline
 
     if unit and UnitIsTapped(unit) and not UnitIsTappedByPlayer(unit) then
       color = {r = 0.65, g = 0.65, b = 0.65}
-    elseif UnitIsDeadOrGhost(unit) or not UnitIsConnected(unit) then
-      color = {r = 0.4, g = 0.4, b = 0.4}
-      dead = 1
+    elseif UnitIsDeadOrGhost(unit) then
+		color = {r = 0.7, g = 0, b = 0}
+		dead = 1
+	elseif not UnitIsConnected(unit) then
+		color = {r = 0.4, g = 0.4, b = 0.4}
+		offline = 1
     elseif not cfg.colorswitcher.classcolored then
       color = cfg.colorswitcher.bright
     --elseif cfg.colorswitcher.threatColored and unit and UnitThreatSituation(unit) == 3 then
@@ -396,11 +400,14 @@ end
     if not color then color = { r = 0.5, g = 0.5, b = 0.5, } end
     --dead
     if dead == 1 then
-		bar.highlight:SetAlpha(0)
-		bar.glow:SetVertexColor(0,0,0,0)
+		bar.glow:SetVertexColor(1,0,0,1)
 		bar:SetStatusBarColor(0,0,0,0)
-		bar.bg:SetVertexColor(0,0,0,0)
-	else 
+		bar.bg:SetVertexColor(1,0,0,0.5)
+	else
+		if offline == 1 then
+			bar:SetStatusBarColor(0,0,0,0)
+			bar.bg:SetVertexColor(0,0,0,0)
+	else
       --alive
       if cfg.colorswitcher.useBrightForeground then
         bar:SetStatusBarColor(color.r,color.g,color.b,color.a or 1)
