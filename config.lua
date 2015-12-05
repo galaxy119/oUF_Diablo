@@ -225,7 +225,7 @@
         actionbarbackground = {
           show = true,
           pos = { a1 = "BOTTOM", a2 = "BOTTOM", af = "UIParent", x = 1, y = 0 },
-          scale = 1.2,
+          scale = 1.5,
         },
         angel = {
           show = true,
@@ -261,8 +261,8 @@
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar256_3",
         tag = "[diablo:hpval]", 
 		fontSize = 7,
-		point = "RIGHT",
-		x = 25,
+		point = "LEFT",
+		x = -20,
 		y = 20,
       },
 	   healper = {
@@ -279,8 +279,8 @@
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",
         tag = "[diablo:ppval]", --more tags see oUF/elements/tags.lua | example: "[curpp] / [perpp]%" or "[diablo:ppval]"
 		fontSize = 7,
-		point = "LEFT",
-		x = -20,
+		point = "RIGHT",
+		x = 25,
 		y = 20,
       },
 	  powper = {
@@ -332,7 +332,7 @@
       portrait = {
         pos = { a1 = "CENTER", a2 = "CENTER", af = "UIParent", x = 100, y = 0 },
         size = 75,
-        show = false,
+        show = true,
         use3D = false,
       },
       healprediction = {
@@ -409,7 +409,7 @@
       },
       portrait = {
         show = true,
-        use3D = true,
+        use3D = false,
       },
       castbar = {
         show = false,
@@ -506,7 +506,7 @@
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",
       },
       portrait = {
-        show = true,
+        show = false,
         use3D = true,
       },
     },
@@ -559,7 +559,6 @@
       },
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
---		tag = "[diablo:misshp]",	--Uncomment this line to enable missing hp (or other health values) on party health bars
 		fontSize = 11,
 		point = "RIGHT",
 		x = -3,
@@ -573,7 +572,7 @@
 	  },
       portrait = {
         show = true,
-        use3D = true,
+        use3D = false,
 		width = 100,
       },
       attributes = {
@@ -582,7 +581,8 @@
         showSolo            = false,    --make this true to show while solo (only works if solo is in visiblity aswell
         showParty           = true,     --make this true to show headerin party
         showRaid            = false,    --show in raid
-        point               = "LEFT",
+        VerticalPoint      = "TOP",    -- Only TOP and BOTTOM are acceptable inputs.
+		HorizontalPoint    = "LEFT",   -- Only LEFT and RIGHT are acceptable Inputs.
       },
       healprediction = {
         show = true,
