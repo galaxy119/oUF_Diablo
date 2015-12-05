@@ -268,7 +268,7 @@
 	   healper = {
     frequentUpdates = true,
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar256_3",
-        tag = "[perhp]%",
+        tag = "[perphp]",
 		fontSize =10,
 		point = "CENTER",
 		x = 0,
@@ -560,6 +560,7 @@
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
 		fontSize = 11,
+		tag = "[status]",
 		point = "RIGHT",
 		x = -3,
 		y = 0,
@@ -615,6 +616,7 @@
       pos = { a1 = "TOPLEFT", a2 = "TOPLEFT", af = "UIParent", x = 5, y = -5 },
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
+		tag = "[status]",
       },
       power = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",

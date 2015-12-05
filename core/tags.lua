@@ -103,6 +103,16 @@
 
   ---------------------------------------------
 
+  --status
+  oUF.Tags.Methods["diablo:ppval"] = function(unit)
+	if not UnitIsConnected(unit) then
+	    local status = "Offline"
+    	return status or ""
+  end
+  oUF.Tags.Events["diablo:ppval"] = "UNIT_POWER UNIT_MAXPOWER"
+
+  ---------------------------------------------
+
   oUF.Tags.Methods["diablo:misshp"] = function(unit)
     local color = oUF.Tags.Methods["diablo:colorsimple"](unit)
     local hpval
@@ -356,8 +366,13 @@
 
   --perphp - hp percent with %
   oUF.Tags.Methods["perphp"] = function(unit)
-    local val = oUF.Tags.Methods["perhp"](unit).."%"
-    return val or ""
+	if UnitIsDeadOrGhost(unit) then
+		val = "Dead"
+    elseif not UnitIsConnected(unit) then
+		val = "Offline"
+    else
+	    local val = oUF.Tags.Methods["perhp"](unit).."%"
+	    return val or ""
   end
   oUF.Tags.Events["perphp"] = "UNIT_HEALTH UNIT_MAXHEALTH UNIT_CONNECTION"
 

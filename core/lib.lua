@@ -418,7 +418,7 @@ end
       end
     end
     --low hp
-    if d <= 25 and dead ~= 1 then
+    if d <= 25 or dead = 1 then
       bar.highlight:SetAlpha(0)
       if cfg.colorswitcher.useBrightForeground then
         bar.glow:SetVertexColor(1,0,0,0.6)
