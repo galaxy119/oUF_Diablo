@@ -173,14 +173,14 @@
     --button:SetSize(icons.size,icons.size)
     --button.cd:SetReverse()
     local size = icons.size or button:GetWidth()
-	button.cd:SetFrameStrata("TOOLTIP")
+	button.cd:SetFrameStrata("MEDIUM")
     button.cd:SetPoint("TOPLEFT", 1, -1)
     button.cd:SetPoint("BOTTOMRIGHT", -1, 1)
     button.icon:SetTexCoord(0.1, 0.9, 0.1, 0.9)
     --count helper frame, this push the count fontstring over the cooldown spiral
     button.countFrame = CreateFrame("Frame",nil,button)
     button.countFrame:SetAllPoints()
-	button.countFrame:SetFrameStrata("TOOLTIP")
+	button.countFrame:SetFrameStrata("MEDIUM")
     button.countFrame:SetFrameLevel(button.cd:GetFrameLevel()+2)
     --button count
     button.count:SetParent(button.countFrame)

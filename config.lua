@@ -277,7 +277,7 @@
       power = {
 	frequentUpdates = true,
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",
-        tag = "[diablo:ppval]", --more tags see oUF/elements/tags.lua | example: "[curpp] / [perpp]%" or "[diablo:ppval]"
+        tag = "[curpp / [perpp]%",
 		fontSize = 7,
 		point = "RIGHT",
 		x = 25,
@@ -285,7 +285,7 @@
       },
 	  powper = {
 		texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",
-		tag = "[perpp]%",
+--		tag = "[perpp]%",
 		fontSize = 7,
 		point = "CENTER",
 		x = 0,
@@ -297,7 +297,7 @@
 	  },
       auras = {
         show = true,
-        size = 15,
+        size = 20,
         onlyShowPlayerBuffs = false,
         showStealableBuffs = true,
         onlyShowPlayerDebuffs = true,
