@@ -378,7 +378,6 @@ end
     local d = floor(min/max*100)
     local color
     local dead
-	local offline
 
     if unit and UnitIsTapped(unit) and not UnitIsTappedByPlayer(unit) then
       color = {r = 0.65, g = 0.65, b = 0.65}
