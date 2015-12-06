@@ -229,8 +229,7 @@
     if not color then color = { r = 0.5, g = 0.5, b = 0.5, } end
     --dead
     if dead == 1 then
-      bar:SetStatusBarColor(0,0,0,0)
-      bar.bg:SetVertexColor(0,0,0,0)
+      
     else
       --alive
       if cfg.colorswitcher.useBrightForeground then
@@ -242,7 +241,7 @@
       end
     end
     --low hp
-    if d <= 25 and dead ~= 1 then
+    if d <= 25 or dead == 1 then
       if cfg.colorswitcher.useBrightForeground then
         bar.glow:SetVertexColor(0.3,0,0,0.9)
         bar:SetStatusBarColor(1,0,0,1)
