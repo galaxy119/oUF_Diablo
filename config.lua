@@ -280,7 +280,7 @@
         tag = "[perpp]%",
 		fontSize = 7,
 		point = "RIGHT",
-		x = 25,
+		x = 10,
 		y = 20,
       },
 	  powper = {
