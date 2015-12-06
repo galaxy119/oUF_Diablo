@@ -214,14 +214,9 @@
     local d = floor(min/max*100)
     local color
     local dead
-	local offline
-
-    if UnitIsDeadOrGhost(unit) then
-		color = {r = 0.7, g = 0, b = 0}
-		dead = 1
-	elseif not UnitIsConnected(unit) then
-		color = {r = 0.4, g = 0.4, b = 0.4}
-		offline = 1
+    if UnitIsDeadOrGhost(unit) or not UnitIsConnected(unit) then
+      color = {r = 0.4, g = 0.4, b = 0.4}
+      dead = 1
     elseif not cfg.colorswitcher.classcolored then
       color = cfg.colorswitcher.bright
     elseif cfg.colorswitcher.threatColored and unit and UnitThreatSituation(unit) == 3 then
@@ -234,13 +229,9 @@
     if not color then color = { r = 0.5, g = 0.5, b = 0.5, } end
     --dead
     if dead == 1 then
-      bar:SetStatusBarColor(1,0,0,1)
-      bar.bg:SetVertexColor(1,0,0,0.5)
+      bar:SetStatusBarColor(0,0,0,0)
+      bar.bg:SetVertexColor(0,0,0,0)
     else
-		if offline == 1 then
-			bar:SetStatusBarColor(0,0,0,0)
-			bar.bg:SetVertexColor(0,0,0,0)
-	else
       --alive
       if cfg.colorswitcher.useBrightForeground then
         bar:SetStatusBarColor(color.r,color.g,color.b,color.a or 1)
@@ -251,7 +242,7 @@
       end
     end
     --low hp
-    if d <= 25 or dead = 1 then
+    if d <= 25 and dead ~= 1 then
       if cfg.colorswitcher.useBrightForeground then
         bar.glow:SetVertexColor(0.3,0,0,0.9)
         bar:SetStatusBarColor(1,0,0,1)
@@ -491,5 +482,23 @@
         end
       end
       groups[i] = group
-    end  
+    end
+	
+	local updateRaidScale = CreateFrame("Frame")
+    updateRaidScale:RegisterEvent("GROUP_ROSTER_UPDATE")
+    updateRaidScale:RegisterEvent("PLAYER_ENTERING_WORLD")
+    updateRaidScale:SetScript("OnEvent", function(self)
+      if(InCombatLockdown()) then
+        self:RegisterEvent("PLAYER_REGEN_ENABLED")
+      else
+        self:UnregisterEvent("PLAYER_REGEN_ENABLED")
+        local num = GetNumGroupMembers()
+        local scale = (100-num)/100*cfg.units.raid.scale
+        for idx, group in pairs(groups) do
+          if group then
+            group:SetScale(scale)
+          end
+        end
+      end
+    end)    
   end

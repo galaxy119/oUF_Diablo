@@ -277,7 +277,7 @@
       power = {
 	frequentUpdates = true,
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",
-        tag = "perpp]%",
+        tag = "[perpp]%",
 		fontSize = 7,
 		point = "RIGHT",
 		x = 25,
@@ -451,6 +451,7 @@
       },
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
+		tag = "[diablo:status]"
       },
       power = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",
@@ -560,7 +561,7 @@
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
 		fontSize = 11,
-		tag = "[status]",
+		tag = "[diablo:status]",
 		point = "RIGHT",
 		x = -3,
 		y = 0,
@@ -616,7 +617,7 @@
       pos = { a1 = "TOPLEFT", a2 = "TOPLEFT", af = "UIParent", x = 5, y = -5 },
       health = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar128_3",
-		tag = "[status]",
+		tag = "[diablo:status]",
       },
       power = {
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",

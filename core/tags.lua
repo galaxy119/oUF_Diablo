@@ -76,6 +76,21 @@
   oUF.Tags.Events["diablo:name"] = "UNIT_NAME_UPDATE UNIT_HEALTH UNIT_MAXHEALTH UNIT_CONNECTION"
 
   ---------------------------------------------
+  
+  --status tag
+  oUF.Tags.Methods["diablo:status"] = function(unit, rolf)
+    local color = oUF.Tags.Methods["diablo:colorsimple"](unit)
+    local status
+	if UnitIsDeadOrGhost(unit) then
+		status = "Dead"
+	elseif not UnitIsConnected(unit) then
+		status = "Offline"
+	end
+    return "|cff"..color..(status or "").."|r"
+  end
+  oUF.Tags.Events["diablo:status"] = "UNIT_HEALTH UNIT_MAXHEALTH UNIT_CONNECTION"
+
+  ---------------------------------------------
 
   --hp value
   oUF.Tags.Methods["diablo:hpval"] = function(unit)
@@ -98,16 +113,6 @@
   oUF.Tags.Methods["diablo:ppval"] = function(unit)
     local ppval = func.numFormat(UnitPower(unit) or 0).." / "..oUF.Tags.Methods["maxspp"](unit)
     return ppval or ""
-  end
-  oUF.Tags.Events["diablo:ppval"] = "UNIT_POWER UNIT_MAXPOWER"
-
-  ---------------------------------------------
-
-  --status
-  oUF.Tags.Methods["diablo:ppval"] = function(unit)
-	if not UnitIsConnected(unit) then
-	    local status = "Offline"
-    	return status or ""
   end
   oUF.Tags.Events["diablo:ppval"] = "UNIT_POWER UNIT_MAXPOWER"
 
@@ -365,16 +370,18 @@
   ---------------------------------------------
 
   --perphp - hp percent with %
-  oUF.Tags.Methods["perphp"] = function(unit)
-	if UnitIsDeadOrGhost(unit) then
-		val = "Dead"
+	oUF.Tags.Methods["perphp"] = function(unit)
+	local perphp
+if UnitIsDeadOrGhost(unit) then
+      perphp = "Dead"
     elseif not UnitIsConnected(unit) then
-		val = "Offline"
+      perphp = "Offline"
     else
-	    local val = oUF.Tags.Methods["perhp"](unit).."%"
-	    return val or ""
-  end
-  oUF.Tags.Events["perphp"] = "UNIT_HEALTH UNIT_MAXHEALTH UNIT_CONNECTION"
+      perphp = oUF.Tags.Methods["perhp"](unit).."%"
+	end
+	return perphp or ""
+end
+	oUF.Tags.Events["perphp"] = "UNIT_HEALTH UNIT_MAXHEALTH UNIT_CONNECTION"
 
   ---------------------------------------------
 

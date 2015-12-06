@@ -262,7 +262,7 @@
       "showSolo",           attr.showSolo,
       "showParty",          attr.showParty,
       "showRaid",           attr.showRaid,
-      "point",              attr.HorizontalPoint,
+      "point",             	attr.HorizontalPoint,
       "oUF-initialConfigFunction", ([[
         self:SetWidth(%d)
         self:SetHeight(%d)
