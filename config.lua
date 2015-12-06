@@ -277,7 +277,7 @@
       power = {
 	frequentUpdates = true,
         texture = "Interface\\AddOns\\oUF_Diablo\\media\\statusbar",
-        tag = "[curpp / [perpp]%",
+        tag = "perpp]%",
 		fontSize = 7,
 		point = "RIGHT",
 		x = 25,
