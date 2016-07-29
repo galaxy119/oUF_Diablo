@@ -93,35 +93,10 @@
         },
         pos = { a1 = "BOTTOM", a2 = "BOTTOM", af = "UIParent", x = 0, y = 180.5 },
       },
-      demonicfury = { --class bar WARLOCK / DEMONOLOGY
-        show = true,
-        scale = 0.7,
-        color = {
-          bar = { r = 114/255, g = 192/255, b = 48/255, },
-          bg  = { r = 50/255, g = 40/255, b = 40/255, },
-        },
-        pos = { a1 = "BOTTOM", a2 = "BOTTOM", af = "UIParent", x = 0, y = 400 },
-        combat          = { --fade the bar in/out in combat/out of combat
-          enable          = false,
-          fadeIn          = {time = 0.4, alpha = 1},
-          fadeOut         = {time = 0.3, alpha = 0.2},
-        },
-      },
       soulshards = { --class bar WARLOCK / AFFLICTION
         show = true,
         scale = 0.40,
         color = {r = 200/255, g = 0/255, b = 255/255, },
-        pos = { a1 = "BOTTOM", a2 = "BOTTOM", af = "UIParent", x = 0, y = 650 },
-        combat          = { --fade the bar in/out in combat/out of combat
-          enable          = false,
-          fadeIn          = {time = 0.4, alpha = 1},
-          fadeOut         = {time = 0.3, alpha = 0.2},
-        },
-      },
-      burningembers = { --class bar WARLOCK / DESTRUCTION
-        show = true,
-        scale = 0.40,
-        color = {r = 255/255, g = 133/255, b = 0/255, },
         pos = { a1 = "BOTTOM", a2 = "BOTTOM", af = "UIParent", x = 0, y = 650 },
         combat          = { --fade the bar in/out in combat/out of combat
           enable          = false,
@@ -145,21 +120,6 @@
         scale = 0.40,
         color = {r = 41/255, g = 209/255, b = 157/255, },
         pos = { a1 = "BOTTOM", a2 = "BOTTOM", af = "UIParent", x = 0, y = 650 },
-        combat          = { --fade the bar in/out in combat/out of combat
-          enable          = false,
-          fadeIn          = {time = 0.4, alpha = 1},
-          fadeOut         = {time = 0.3, alpha = 0.2},
-        },
-      },
-      eclipse = { --class bar DRUID
-        show = true,
-        scale = 0.7,
-        color = {
-          solar = { r = 255/255, g = 200/255, b = 0/255, },
-          lunar = { r = 0/255, g = 255/255, b = 255/255, },
-          bg  = { r = 50/255, g = 40/255, b = 40/255, },
-        },
-        pos = { a1 = "BOTTOM", a2 = "BOTTOM", af = "UIParent", x = 0, y = 400 },
         combat          = { --fade the bar in/out in combat/out of combat
           enable          = false,
           fadeIn          = {time = 0.4, alpha = 1},
@@ -571,7 +531,7 @@
       },
       attributes = {
         visibility          = "custom [group:party,nogroup:raid] show;hide",  --show this header in party
-        showPlayer          = false,     --make this true to show player in party
+        showPlayer          = true,     --make this true to show player in party
         showSolo            = false,    --make this true to show while solo (only works if solo is in visiblity aswell
         showParty           = true,     --make this true to show headerin party
         showRaid            = true,    --show in raid
@@ -710,6 +670,7 @@
   cfg.playername  = UnitName("player")
   cfg.playerclass = select(2,UnitClass("player"))
   cfg.playercolor = RAID_CLASS_COLORS[cfg.playerclass]
+  cfg.playerspec = GetSpecialization()
 
   ----------------------------------------
   -- other

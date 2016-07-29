@@ -495,14 +495,8 @@
     end
 
     --warlock bars
-    if cfg.playerclass == "WARLOCK" and self.cfg.demonicfury.show then
-      bars.createDemonicFuryPowerBar(self)
-    end
     if cfg.playerclass == "WARLOCK" and self.cfg.soulshards.show then
       bars.createSoulShardPowerBar(self)
-    end
-    if cfg.playerclass == "WARLOCK" and self.cfg.burningembers.show then
-      bars.createBurningEmberPowerBar(self)
     end
 
     --holypower
@@ -513,11 +507,6 @@
     --harmony
     if cfg.playerclass == "MONK" and self.cfg.harmony.show then
       bars.createHarmonyPowerBar(self)
-    end
-
-    --eclipsebar
-    if cfg.playerclass == "DRUID" and self.cfg.eclipse.show then
-      bars.createEclipseBar(self)
     end
 
     --runes
