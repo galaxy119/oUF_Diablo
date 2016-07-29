@@ -686,7 +686,7 @@ end
 
     if f.cfg.style == "target" then
       c.Shield = c:CreateTexture(nil,"BACKGROUND",nil,-8)
-      c.Shield:SetTexture(0,0,0,0)
+      c.Shield:SetColorTexture(0,0,0,0)
     end
 
     --safezone
@@ -731,7 +731,7 @@ end
     df:SetScript("OnDragStop", function(self) self:GetParent():StopMovingOrSizing() end)
     local t = df:CreateTexture(nil,"OVERLAY",nil,6)
     t:SetAllPoints(df)
-    t:SetTexture(0,1,0)
+    t:SetColorTexture(0,1,0)
     t:SetAlpha(0.2)
     df.texture = t
     f.dragframe = df

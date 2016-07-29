@@ -216,7 +216,7 @@
     local dead
 	local offline
 
-    if unit and UnitIsTapped(unit) and not UnitIsTappedByPlayer(unit) then
+    if unit and UnitIsTapDenied(unit) then
       color = {r = 0.65, g = 0.65, b = 0.65}
     elseif UnitIsDeadOrGhost(unit) then
       color = {r = 0.4, g = 0.4, b = 0.4}
